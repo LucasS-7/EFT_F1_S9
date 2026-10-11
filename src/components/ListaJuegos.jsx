@@ -1,7 +1,7 @@
 import TarjetaJuego from "./TarjetaJuego.jsx";
 
 // recorre la lista de juegos y dibuja una tarjeta por cada uno
-function ListaJuegos({ juegos, onEliminar }) {
+function ListaJuegos({ juegos, modoAdmin, onEliminar }) {
   if (juegos.length === 0) {
     return (
       <p className="text-center texto-suave py-5">
@@ -18,7 +18,12 @@ function ListaJuegos({ juegos, onEliminar }) {
 
       <div className="grilla-juegos">
         {juegos.map((juego) => (
-          <TarjetaJuego key={juego.id} juego={juego} onEliminar={onEliminar} />
+          <TarjetaJuego
+            key={juego.id}
+            juego={juego}
+            modoAdmin={modoAdmin}
+            onEliminar={onEliminar}
+          />
         ))}
       </div>
     </>

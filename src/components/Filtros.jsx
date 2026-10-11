@@ -1,5 +1,4 @@
 // botones para filtrar los juegos por categoría
-// el estado vive en App, acá solo se avisa qué botón se apretó
 function Filtros({ categorias, categoriaActiva, onCambiar }) {
   // agrego "Todos" al principio para poder sacar el filtro
   const opciones = ["Todos", ...categorias];

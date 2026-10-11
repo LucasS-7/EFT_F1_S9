@@ -8,7 +8,7 @@ const datosVacios = {
   descripcion: "",
 };
 
-// formulario para agregar un videojuego nuevo a la lista
+// formulario para agregar un videojuego nuevo (solo aparece en modo administrador)
 function FormularioJuego({ categorias, onAgregar }) {
   const [datos, setDatos] = useState(datosVacios);
   const [errores, setErrores] = useState({});

@@ -1,6 +1,3 @@
-/* estilos propios de Gamer Zone, van encima de bootstrap */
-
-/* cambio los colores del tema oscuro de bootstrap por los míos */
 [data-bs-theme="dark"] {
   --bs-body-bg: #12151f;
   --bs-body-color: #e8ecf5;
@@ -23,7 +20,6 @@ body {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* para que la barra fija no tape el título al hacer clic en un link del menú */
 section[id] {
   scroll-margin-top: 70px;
 }

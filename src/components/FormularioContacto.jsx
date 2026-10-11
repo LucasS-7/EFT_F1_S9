@@ -25,8 +25,6 @@ function FormularioContacto() {
     if (datos.nombre.trim().length < 3) {
       nuevosErrores.nombre = "Escribe tu nombre (mínimo 3 letras).";
     }
-
-    // el correo tiene que verse como algo@algo.algo
     const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (datos.email.trim() === "") {
       nuevosErrores.email = "El correo es obligatorio.";

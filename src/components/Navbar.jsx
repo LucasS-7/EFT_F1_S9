@@ -1,4 +1,4 @@
-// barra de navegación de bootstrap, en celular se esconde en el botón de las 3 rayitas
+// barra de navegación de bootstrap
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark barra-nav">

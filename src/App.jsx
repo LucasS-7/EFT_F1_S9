@@ -9,13 +9,16 @@ import Footer from "./components/Footer.jsx";
 import categorias from "./data/categorias.js";
 
 function App() {
-  // lista de juegos, se llena con lo que viene de juegos.json
+
   const [juegos, setJuegos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
 
   // categoría elegida en los filtros ("Todos" muestra todo)
   const [categoriaActiva, setCategoriaActiva] = useState("Todos");
+
+  // si está activado se ve el formulario de agregar y los botones de eliminar
+  const [modoAdmin, setModoAdmin] = useState(false);
 
   // cuando carga la página se leen los juegos del archivo json
   useEffect(() => {
@@ -41,7 +44,6 @@ function App() {
   }, []);
 
   function agregarJuego(juegoNuevo) {
-    // el nuevo va primero y se saca el filtro para que se vea altiro
     setJuegos([juegoNuevo, ...juegos]);
     setCategoriaActiva("Todos");
   }
@@ -66,7 +68,23 @@ function App() {
         <Hero />
 
         <section id="catalogo" className="container seccion">
-          <h2 className="titulo-seccion mb-4">Catálogo</h2>
+          <div className="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <h2 className="titulo-seccion mb-0">Catálogo</h2>
+
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="switchAdmin"
+                checked={modoAdmin}
+                onChange={() => setModoAdmin(!modoAdmin)}
+              />
+              <label className="form-check-label" htmlFor="switchAdmin">
+                Modo administrador
+              </label>
+            </div>
+          </div>
 
           <Filtros
             categorias={categorias}
@@ -74,7 +92,9 @@ function App() {
             onCambiar={setCategoriaActiva}
           />
 
-          <FormularioJuego categorias={categorias} onAgregar={agregarJuego} />
+          {modoAdmin && (
+            <FormularioJuego categorias={categorias} onAgregar={agregarJuego} />
+          )}
 
           {cargando && (
             <div className="text-center py-5">
@@ -90,7 +110,11 @@ function App() {
           )}
 
           {!cargando && !error && (
-            <ListaJuegos juegos={juegosFiltrados} onEliminar={eliminarJuego} />
+            <ListaJuegos
+              juegos={juegosFiltrados}
+              modoAdmin={modoAdmin}
+              onEliminar={eliminarJuego}
+            />
           )}
         </section>
 

@@ -1,5 +1,5 @@
 // una tarjeta (card de bootstrap) con los datos de un videojuego
-function TarjetaJuego({ juego, onEliminar }) {
+function TarjetaJuego({ juego, modoAdmin, onEliminar }) {
   function confirmarEliminar() {
     if (window.confirm("¿Seguro que quieres eliminar " + juego.nombre + "?")) {
       onEliminar(juego.id);
@@ -29,13 +29,16 @@ function TarjetaJuego({ juego, onEliminar }) {
           ${Number(juego.precio).toLocaleString("es-CL")}
         </p>
 
-        <button
-          type="button"
-          className="btn btn-outline-danger btn-sm mt-3"
-          onClick={confirmarEliminar}
-        >
-          Eliminar
-        </button>
+        {/* el botón de eliminar solo se ve en modo administrador */}
+        {modoAdmin && (
+          <button
+            type="button"
+            className="btn btn-outline-danger btn-sm mt-3"
+            onClick={confirmarEliminar}
+          >
+            Eliminar
+          </button>
+        )}
       </div>
     </article>
   );
