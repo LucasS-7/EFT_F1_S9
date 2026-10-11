@@ -1,0 +1,46 @@
+# Publica la página en GitHub Pages cada vez que se hace push a main
+name: Desplegar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # permite correrlo a mano desde la pestaña Actions
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # baja el código del repositorio
+      - uses: actions/checkout@v4
+
+      # instala Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # instala las dependencias y construye el sitio (se crea la carpeta dist)
+      - run: npm ci
+      - run: npm run build
+
+      # sube la carpeta dist para publicarla
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
