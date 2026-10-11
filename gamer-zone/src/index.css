@@ -1,0 +1,219 @@
+/* estilos propios de Gamer Zone, van encima de bootstrap */
+
+/* cambio los colores del tema oscuro de bootstrap por los míos */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #12151f;
+  --bs-body-color: #e8ecf5;
+  --bs-border-color: #2c3550;
+}
+
+:root {
+  --fondo-claro: #1b2030;
+  --borde: #2c3550;
+  --texto-suave: #9aa6c4;
+  --amarillo: #ffb703;
+  --turquesa: #2ec4b6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* para que la barra fija no tape el título al hacer clic en un link del menú */
+section[id] {
+  scroll-margin-top: 70px;
+}
+
+.texto-suave {
+  color: var(--texto-suave);
+}
+
+/* ---------- barra de navegación ---------- */
+
+.barra-nav {
+  background-color: #0d1017;
+  border-bottom: 3px solid var(--amarillo);
+}
+
+.marca {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.9rem;
+  color: var(--amarillo) !important;
+}
+
+.barra-nav .nav-link {
+  color: #e8ecf5;
+}
+
+.barra-nav .nav-link:hover {
+  color: var(--amarillo);
+}
+
+/* ---------- inicio ---------- */
+
+.hero {
+  padding: 80px 0;
+  background-image: radial-gradient(#2c3550 1.5px, transparent 1.5px),
+    linear-gradient(135deg, #1b2030 0%, #12151f 100%);
+  background-size: 28px 28px, 100% 100%;
+  border-bottom: 1px solid var(--borde);
+}
+
+.hero-titulo {
+  font-family: "Press Start 2P", monospace;
+  font-size: 2rem;
+  line-height: 1.4;
+  color: var(--amarillo);
+  margin-bottom: 24px;
+}
+
+.hero-texto {
+  max-width: 640px;
+  margin: 0 auto 28px auto;
+  color: var(--texto-suave);
+}
+
+/* ---------- botones ---------- */
+
+.btn-boton-principal {
+  background-color: var(--amarillo);
+  border-color: var(--amarillo);
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.btn-boton-principal:hover {
+  background-color: #ffc83d;
+  border-color: #ffc83d;
+  color: #1a1a1a;
+}
+
+.btn-filtro {
+  background-color: transparent;
+  border: 1px solid var(--borde);
+  color: #e8ecf5;
+}
+
+.btn-filtro:hover {
+  border-color: var(--turquesa);
+  color: var(--turquesa);
+}
+
+.btn-filtro.activo {
+  background-color: var(--turquesa);
+  border-color: var(--turquesa);
+  color: #0d1017;
+  font-weight: 600;
+}
+
+/* ---------- secciones ---------- */
+
+.seccion {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.titulo-seccion {
+  font-family: "Press Start 2P", monospace;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--turquesa);
+}
+
+/* ---------- catálogo (CSS Grid) ---------- */
+
+.grilla-juegos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.tarjeta-juego {
+  background-color: var(--fondo-claro);
+  border: 1px solid var(--borde);
+  overflow: hidden;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.tarjeta-juego:hover {
+  transform: translateY(-4px);
+  border-color: var(--amarillo);
+}
+
+.tarjeta-imagen {
+  height: 170px;
+  object-fit: cover;
+  background-color: #0d1017;
+}
+
+.etiqueta-categoria {
+  background-color: var(--turquesa);
+  color: #0d1017;
+}
+
+.descripcion {
+  color: var(--texto-suave);
+  font-size: 0.92rem;
+}
+
+.precio {
+  color: var(--amarillo);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* ---------- formularios ---------- */
+
+.caja-formulario {
+  background-color: var(--fondo-claro);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.formulario-contacto {
+  max-width: 720px;
+}
+
+/* ---------- footer (Flexbox) ---------- */
+
+.pie {
+  background-color: #0d1017;
+  border-top: 3px solid var(--amarillo);
+  padding: 24px 0;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.pie-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---------- celulares ---------- */
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 50px 0;
+  }
+
+  .hero-titulo {
+    font-size: 1.4rem;
+  }
+
+  .titulo-seccion {
+    font-size: 0.9rem;
+  }
+
+  .pie-contenido {
+    flex-direction: column;
+    text-align: center;
+  }
+}
